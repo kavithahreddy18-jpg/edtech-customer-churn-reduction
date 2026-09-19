@@ -1,0 +1,23 @@
+name: Validate Analytics Project
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '02_Data/**'
+      - '04_SQL/**'
+      - '05_Python/**'
+      - '06_Power_BI/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pandas numpy scikit-learn openpyxl
+      - run: python -m py_compile 05_Python/run_analysis.py
+      - run: python -m json.tool 06_Power_BI/EdTech_Churn.pbip
+      - run: python -m json.tool 06_Power_BI/EdTech_Churn.Report/definition.pbir
