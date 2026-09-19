@@ -147,7 +147,7 @@ table Customer360
     sourceColumn: customer_segment
     summarizeBy: none
 
-    column 'arpu'
+    column 'ARPU Value'
     dataType: double
     sourceColumn: arpu
     summarizeBy: none
@@ -167,7 +167,7 @@ table Customer360
     formatString: 0.0%
     measure 'Avg Session Minutes' = AVERAGE('Customer360'[avg_session_duration_minutes])
     formatString: 0.0
-    measure 'ARPU' = AVERAGE('Customer360'[arpu])
+    measure 'ARPU' = AVERAGE('Customer360'[ARPU Value])
     formatString: $#,##0.00
     measure 'Estimated LTV' = AVERAGE('Customer360'[estimated_ltv])
     formatString: $#,##0.00
