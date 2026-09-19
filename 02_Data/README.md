@@ -1,20 +1,34 @@
 # Dataset
 
-The project uses a synthetic relational dataset for portfolio demonstration.
+The repository contains the **actual synthetic dataset tables**, stored as compressed CSV files (`.csv.gz`) so the full 25,000-customer dataset can be versioned in GitHub.
 
-Source tables:
-- customers.csv
-- courses.csv
-- enrollments.csv
-- user_activity.csv
-- subscriptions.csv
-- payments.csv
-- feedback.csv
-- support_tickets.csv
+## Raw tables
 
-Processed analytical table:
-- customer_360.csv
+- `customers.csv.gz` — 25,000 customers
+- `courses.csv.gz` — 120 courses
+- `enrollments.csv.gz` — 47,850 enrollments
+- `user_activity.csv.gz` — 299,374 activity records
+- `subscriptions.csv.gz` — 25,000 subscriptions
+- `payments.csv.gz` — 99,596 payments
+- `feedback.csv.gz` — 15,500 feedback records
+- `support_tickets.csv.gz` — 20,000 support tickets
 
-The intended final dataset contains 25,000 customers and the related transactional/behavioural records described in the root README.
+Processed:
 
-Because GitHub Contents API is text-oriented in this connected workspace, the repository stores the reproducible generator and analytical artifacts; the full working dataset is also supplied as the downloadable project package from the assistant session. The generator can recreate the raw data locally.
+- `customer_360.csv.gz`
+
+## How to use
+
+1. Open `02_Data/raw` on GitHub.
+2. Download the required `.csv.gz` file.
+3. Extract it with 7-Zip/WinRAR, or run:
+
+```bash
+python 02_Data/extract_dataset.py
+```
+
+The extracted files are normal CSV files and can be loaded into Excel, SQL, Python or Power BI.
+
+## Data note
+
+All data is **synthetic** and was generated specifically for this portfolio project. It is not real customer/company data.
