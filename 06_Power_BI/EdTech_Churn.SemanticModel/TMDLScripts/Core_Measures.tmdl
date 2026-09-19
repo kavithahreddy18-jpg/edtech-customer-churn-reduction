@@ -1,0 +1,5 @@
+createOrReplace
+    ref table Customer360
+        measure 'Total Customers' = DISTINCTCOUNT('Customer360'[customer_id])
+        measure 'Churn Rate' = DIVIDE(SUM('Customer360'[churn_flag]), DISTINCTCOUNT('Customer360'[customer_id]))
+        measure 'Retention Rate' = 1 - [Churn Rate]
