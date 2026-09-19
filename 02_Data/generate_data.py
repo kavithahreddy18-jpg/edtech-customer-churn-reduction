@@ -1,4 +1,5 @@
-# EdTech Churn Synthetic Data Generator
+# EdTech Churn Synthetic Data Generator — portfolio source pipeline
+# NOTE: the repository also contains a processed customer_360 table and analytical artifacts.
 # Generates the relational source data used by the portfolio.
 # Run: python generate_data.py
 #
