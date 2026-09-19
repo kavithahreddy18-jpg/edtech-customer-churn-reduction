@@ -10,7 +10,7 @@ table Customer360
         source = ```
             let
                 ProjectRoot = "C:\\REPLACE_WITH_PROJECT_ROOT\\",
-                Source = Csv.Document(File.Contents(ProjectRoot & "02_Data\\processed\\customer_360.csv"), [Delimiter=",", Columns=27, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+                Source = Csv.Document(File.Contents(ProjectRoot & "Data\\processed\\customer_360.csv"), [Delimiter=",", Columns=27, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
                 Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
                 Typed = Table.TransformColumnTypes(Promoted, {
                     {"customer_id", type text}, {"signup_date", type date}, {"age", Int64.Type}, {"gender", type text}, {"country", type text}, {"acquisition_channel", type text}, {"subscription_plan", type text},
@@ -23,153 +23,153 @@ table Customer360
             ```
 
     column 'customer_id'
-        dataType: string
-        sourceColumn: customer_id
-        summarizeBy: none
+    dataType: string
+    sourceColumn: customer_id
+    summarizeBy: none
 
     column 'signup_date'
-        dataType: dateTime
-        sourceColumn: signup_date
-        summarizeBy: none
+    dataType: dateTime
+    sourceColumn: signup_date
+    summarizeBy: none
 
     column 'age'
-        dataType: int64
-        sourceColumn: age
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: age
+    summarizeBy: none
 
     column 'gender'
-        dataType: string
-        sourceColumn: gender
-        summarizeBy: none
+    dataType: string
+    sourceColumn: gender
+    summarizeBy: none
 
     column 'country'
-        dataType: string
-        sourceColumn: country
-        summarizeBy: none
+    dataType: string
+    sourceColumn: country
+    summarizeBy: none
 
     column 'acquisition_channel'
-        dataType: string
-        sourceColumn: acquisition_channel
-        summarizeBy: none
+    dataType: string
+    sourceColumn: acquisition_channel
+    summarizeBy: none
 
     column 'subscription_plan'
-        dataType: string
-        sourceColumn: subscription_plan
-        summarizeBy: none
+    dataType: string
+    sourceColumn: subscription_plan
+    summarizeBy: none
 
     column 'engagement_score'
-        dataType: double
-        sourceColumn: engagement_score
-        summarizeBy: none
+    dataType: double
+    sourceColumn: engagement_score
+    summarizeBy: none
 
     column 'course_completion_rate'
-        dataType: double
-        sourceColumn: course_completion_rate
-        summarizeBy: none
+    dataType: double
+    sourceColumn: course_completion_rate
+    summarizeBy: none
 
     column 'avg_session_duration_minutes'
-        dataType: double
-        sourceColumn: avg_session_duration_minutes
-        summarizeBy: none
+    dataType: double
+    sourceColumn: avg_session_duration_minutes
+    summarizeBy: none
 
     column 'support_ticket_count'
-        dataType: int64
-        sourceColumn: support_ticket_count
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: support_ticket_count
+    summarizeBy: none
 
     column 'nps_score'
-        dataType: int64
-        sourceColumn: nps_score
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: nps_score
+    summarizeBy: none
 
     column 'churn_flag'
-        dataType: int64
-        sourceColumn: churn_flag
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: churn_flag
+    summarizeBy: none
 
     column 'total_sessions'
-        dataType: int64
-        sourceColumn: total_sessions
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: total_sessions
+    summarizeBy: none
 
     column 'avg_session_duration'
-        dataType: double
-        sourceColumn: avg_session_duration
-        summarizeBy: none
+    dataType: double
+    sourceColumn: avg_session_duration
+    summarizeBy: none
 
     column 'total_pages'
-        dataType: int64
-        sourceColumn: total_pages
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: total_pages
+    summarizeBy: none
 
     column 'courses_enrolled'
-        dataType: int64
-        sourceColumn: courses_enrolled
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: courses_enrolled
+    summarizeBy: none
 
     column 'avg_completion_rate'
-        dataType: double
-        sourceColumn: avg_completion_rate
-        summarizeBy: none
+    dataType: double
+    sourceColumn: avg_completion_rate
+    summarizeBy: none
 
     column 'completed_courses'
-        dataType: int64
-        sourceColumn: completed_courses
-        summarizeBy: none
+    dataType: int64
+    sourceColumn: completed_courses
+    summarizeBy: none
 
     column 'total_revenue'
-        dataType: double
-        sourceColumn: total_revenue
-        summarizeBy: none
+    dataType: double
+    sourceColumn: total_revenue
+    summarizeBy: none
 
     column 'payment_count'
-        dataType: double
-        sourceColumn: payment_count
-        summarizeBy: none
+    dataType: double
+    sourceColumn: payment_count
+    summarizeBy: none
 
     column 'refunds'
-        dataType: double
-        sourceColumn: refunds
-        summarizeBy: none
+    dataType: double
+    sourceColumn: refunds
+    summarizeBy: none
 
     column 'support_tickets'
-        dataType: double
-        sourceColumn: support_tickets
-        summarizeBy: none
+    dataType: double
+    sourceColumn: support_tickets
+    summarizeBy: none
 
     column 'avg_resolution_hours'
-        dataType: double
-        sourceColumn: avg_resolution_hours
-        summarizeBy: none
+    dataType: double
+    sourceColumn: avg_resolution_hours
+    summarizeBy: none
 
     column 'customer_segment'
-        dataType: string
-        sourceColumn: customer_segment
-        summarizeBy: none
+    dataType: string
+    sourceColumn: customer_segment
+    summarizeBy: none
 
     column 'arpu'
-        dataType: double
-        sourceColumn: arpu
-        summarizeBy: none
+    dataType: double
+    sourceColumn: arpu
+    summarizeBy: none
 
     column 'estimated_ltv'
-        dataType: double
-        sourceColumn: estimated_ltv
-        summarizeBy: none
+    dataType: double
+    sourceColumn: estimated_ltv
+    summarizeBy: none
 
     measure 'Total Customers' = DISTINCTCOUNT('Customer360'[customer_id])
-        formatString: #,##0
+    formatString: #,##0
     measure 'Churn Rate' = DIVIDE(SUM('Customer360'[churn_flag]), DISTINCTCOUNT('Customer360'[customer_id]))
-        formatString: 0.0%
+    formatString: 0.0%
     measure 'Retention Rate' = 1 - [Churn Rate]
-        formatString: 0.0%
+    formatString: 0.0%
     measure 'Completion Rate' = AVERAGE('Customer360'[course_completion_rate])
-        formatString: 0.0%
+    formatString: 0.0%
     measure 'Avg Session Minutes' = AVERAGE('Customer360'[avg_session_duration_minutes])
-        formatString: 0.0
+    formatString: 0.0
     measure 'ARPU' = AVERAGE('Customer360'[arpu])
-        formatString: $#,##0.00
+    formatString: $#,##0.00
     measure 'Estimated LTV' = AVERAGE('Customer360'[estimated_ltv])
-        formatString: $#,##0.00
+    formatString: $#,##0.00
     measure 'At Risk Customers' = CALCULATE([Total Customers], 'Customer360'[customer_segment] = "At-risk")
-        formatString: #,##0
+    formatString: #,##0
